@@ -39,7 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    # 'profiles.apps.ProfilesConfig'
+    'profiles.apps.ProfilesConfig',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'rest_auth.registration',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +136,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ## MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICAITON = 'none'
+ACCOUNT_EMAIL_REQUIRED = (True)
